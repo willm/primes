@@ -1,3 +1,4 @@
+var webpackConfig = require('./webpack.config');
 // Karma configuration
 // Generated on Mon Nov 28 2016 00:32:28 GMT+0000 (GMT)
 
@@ -27,10 +28,10 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        'test/*-tests.js': 'webpack'
+        'test/*-tests.js': 'webpack',
     },
 
-    webpack: {
+    webpack: Object.assign({
         node: {
             fs: 'empty'
         }
@@ -39,12 +40,12 @@ module.exports = function(config) {
       // webpack watches dependencies
 
       // webpack configuration
-    },
+    }, webpackConfig),
 
     webpackMiddleware: {
       // webpack-dev-middleware configuration
       // i. e.
-      stats: 'errors-only'
+      stats: 'errors-only',
     },
 
     plugins: [
