@@ -1,18 +1,18 @@
 'use strict';
 
-var tape = require('tape');
+var test = require('tape');
 var generatePrimes = require('../src/generate-primes');
 require('babel-polyfill');
 
-tape('1 gets 1 prime', assert => {
+test('1 gets 1 prime', assert => {
     const primes = generatePrimes(1);
-    assert.deepEqual(primes, [2]);
+    assert.deepEqual(primes, [2], 'found the right primes');
     assert.end();
 });
 
-tape('2 gets 2 primes', assert => {
+test('2 gets 2 primes', assert => {
     const primes = generatePrimes(2);
-    assert.deepEqual(primes, [2, 3]);
+    assert.deepEqual(primes, [2, 3], 'found the right primes');
     assert.end();
 });
 
@@ -25,7 +25,7 @@ function isPrime(x) {
     return true;
 }
 
-tape('5 gets 5 primes', assert => {
+test('5 gets 5 primes', assert => {
     const primes = generatePrimes(5);
     assert.equal(primes.length, 5, 'got 5 primes');
     assert.equal(

@@ -1,4 +1,6 @@
 module.exports = (howMany) => {
+    // The algorithm generates primes up to a certain number,
+    // so make sure this is a large number.
     const max = Math.pow(howMany, 2) + 2;
     const firstPrime = 2;
     return getPrimes(howMany, getInitialSeries(max), [firstPrime]);
