@@ -1,0 +1,33 @@
+body {
+    font-family: sans-serif;
+    color: #fff;
+    background-color: #000;
+}
+
+#content {
+    margin: 0 10px;
+}
+
+.logo {
+    transform: rotate(-18deg);
+    width: 220px;
+    float: left;
+    padding: 10px;
+}
+
+#table {
+    max-width: 100%;
+}
+
+.form-component {
+    margin: 5px 0;
+}
+
+h1 {
+    padding-top: 10px;
+}
+
+td, th {
+    width: 30px;
+    text-align: left;
+}
