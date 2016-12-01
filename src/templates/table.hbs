@@ -1,0 +1,15 @@
+<table>
+	<tr>
+		<th></th>
+		{{#each primes}}
+			<th>{{this}}</th>
+		{{/each}}
+	</tr>
+	{{#each factors}}
+		<tr>
+		{{#each this}}
+			<td>{{.}}</td>
+		{{/each}}
+		</tr>
+	{{/each}}
+</table>
