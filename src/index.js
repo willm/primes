@@ -3,7 +3,6 @@ const getFactors = require('./get-factors');
 const table = require('./templates/table.hbs');
 const form = require('./templates/form.hbs');
 const $ = require('jquery');
-const div = $('div');
 
 const formElement = $(form()).submit(displayTable);
 const formDiv = $('#form');
