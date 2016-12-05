@@ -25,6 +25,19 @@ function isPrime(x) {
     return true;
 }
 
+function testManyPrimes (amount) {
+    test(`can get ${amount} primes`, assert => {
+        const startTime = Date.now();
+        const primes = generatePrimes(amount);
+        const endTime = Date.now();
+        const timeTaken = endTime - startTime;
+        assert.equal(timeTaken < 5000, true,
+            `found ${amount} primes in less than 5 seconds: ${timeTaken}ms`);
+        assert.end();
+    });
+
+}
+
 test('5 gets 5 primes', assert => {
     const primes = generatePrimes(5);
     assert.equal(primes.length, 5, 'got 5 primes');
@@ -33,12 +46,6 @@ test('5 gets 5 primes', assert => {
     assert.end();
 });
 
-test('can get 500 primes', assert => {
-    const startTime = Date.now();
-    const primes = generatePrimes(500);
-    const endTime = Date.now();
-    const timeTaken = endTime - startTime;
-    assert.equal(timeTaken < 5000, true,
-        'found 500 primes in less than 5 seconds: ' + timeTaken);
-    assert.end();
-});
+testManyPrimes(500);
+testManyPrimes(1000);
+testManyPrimes(2000);
