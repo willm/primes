@@ -31,6 +31,7 @@ function testManyPrimes (amount) {
         const primes = generatePrimes(amount);
         const endTime = Date.now();
         const timeTaken = endTime - startTime;
+        assert.equal(primes.length, amount, `generated ${amount} primes`);
         assert.equal(timeTaken < 5000, true,
             `found ${amount} primes in less than 5 seconds: ${timeTaken}ms`);
         assert.end();
