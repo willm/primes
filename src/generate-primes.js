@@ -1,7 +1,7 @@
 module.exports = (howMany) => {
     // The algorithm generates primes up to a certain number,
     // so make sure this is a large number.
-    const max = Math.pow(howMany, 2) + 2;
+    const max = howMany * 10 + 2;
     const firstPrime = 2;
     return getPrimes(howMany, getInitialSeries(max), [firstPrime]);
 }
@@ -24,7 +24,15 @@ function getPrimes(howMany, series, numbers) {
     }
     const markedSeries = series
         .map(markMultiples(numbers.slice(-1)[0]));
-    return getPrimes(howMany, markedSeries, numbers.concat(
+    let startAt;
+    const nextPrime = markedSeries.find((x, i) => {
+        if(!x.marked) {
+            startAt = i - 1;
+            return true;
+        }
+        return false;
+    }).number;
+    return getPrimes(howMany, markedSeries.slice(startAt), numbers.concat(
         markedSeries.find(x => !x.marked).number
     ));
 }

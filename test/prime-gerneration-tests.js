@@ -32,3 +32,13 @@ test('5 gets 5 primes', assert => {
         true, primes.every(isPrime), 'all numbers are prime');
     assert.end();
 });
+
+test('can get 500 primes', assert => {
+    const startTime = Date.now();
+    const primes = generatePrimes(500);
+    const endTime = Date.now();
+    const timeTaken = endTime - startTime;
+    assert.equal(timeTaken < 5000, true,
+        'found 500 primes in less than 5 seconds: ' + timeTaken);
+    assert.end();
+});
