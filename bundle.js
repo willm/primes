@@ -74,7 +74,7 @@
 	module.exports = function (howMany) {
 	    // The algorithm generates primes up to a certain number,
 	    // so make sure this is a large number.
-	    var max = Math.pow(howMany, 2) + 2;
+	    var max = howMany * 10 + 2;
 	    var firstPrime = 2;
 	    return getPrimes(howMany, getInitialSeries(max), [firstPrime]);
 	};
@@ -96,7 +96,15 @@
 	        return numbers;
 	    }
 	    var markedSeries = series.map(markMultiples(numbers.slice(-1)[0]));
-	    return getPrimes(howMany, markedSeries, numbers.concat(markedSeries.find(function (x) {
+	    var startAt = void 0;
+	    var nextPrime = markedSeries.find(function (x, i) {
+	        if (!x.marked) {
+	            startAt = i - 1;
+	            return true;
+	        }
+	        return false;
+	    }).number;
+	    return getPrimes(howMany, markedSeries.slice(startAt), numbers.concat(markedSeries.find(function (x) {
 	        return !x.marked;
 	    }).number));
 	}
